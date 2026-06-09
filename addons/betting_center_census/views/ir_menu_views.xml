@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="menu_betting_center_census_root" 
+                  name="IOBPAS Census" 
+                  sequence="10"/>
+
+        <menuitem id="menu_betting_center_census_management" 
+                  name="Census Management" 
+                  parent="menu_betting_center_census_root" 
+                  sequence="10"/>
+
+        <menuitem id="menu_betting_center_census_requests" 
+                  name="Registration Requests" 
+                  parent="menu_betting_center_census_management" 
+                  action="action_betting_center_census" 
+                  sequence="10"/>
+            
+    </data>
+</odoo>

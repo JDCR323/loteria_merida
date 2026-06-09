@@ -1,0 +1,120 @@
+
+<odoo>
+    <data>
+        <template id="template_register_census" name="Census Registration Form">
+            <t t-call="website.layout">
+                <div id="wrap" class="container my-5">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-9 bg-white p-5 shadow-sm rounded">
+                            <h2 class="text-center mb-4 text-dark font-weight-bold">Betting Center Census - IOBPAS</h2>
+                            
+                            <form action="/census/register" method="post" enctype="multipart/form-data" class="needs-validation">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                
+                                <h5 class="text-primary border-bottom pb-2 mb-3">I. APPLICANT DATA</h5>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label font-weight-bold">Person Type:</label>
+                                    <div class="col-sm-9 d-flex align-items-center">
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="person_natural" name="person_type" value="natural" class="custom-control-input" checked="checked" onclick="toggleFormFields()"/>
+                                            <label class="custom-control-label" for="person_natural">Natural</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="person_legal" name="person_type" value="legal" class="custom-control-input" onclick="toggleFormFields()"/>
+                                            <label class="custom-control-label" for="person_legal">Legal</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="section_natural">
+                                    <div class="form-group">
+                                        <label>Full Name</label>
+                                        <input type="text" name="full_name" class="form-control"/>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6"><label>Identity Card</label><input type="text" name="identity_card" class="form-control"/></div>
+                                        <div class="form-group col-md-6"><label>R.I.F. (Valid)</label><input type="text" name="rif_natural" class="form-control"/></div>
+                                    </div>
+                                </div>
+
+                                <div id="section_legal" style="display: none;">
+                                    <div class="form-group">
+                                        <label>Business Name</label>
+                                        <input type="text" name="business_name" class="form-control"/>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6"><label>Legal R.I.F.</label><input type="text" name="rif_legal" class="form-control"/></div>
+                                        <div class="form-group col-md-6"><label>Mercantile Registry No.</label><input type="text" name="registry_number" class="form-control"/></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Social Objective</label>
+                                        <textarea name="social_objective" class="form-control" placeholder="Exclusive to lottery exploitation"></textarea>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-8"><label>Legal Representative</label><input type="text" name="legal_representative" class="form-control"/></div>
+                                        <div class="form-group col-md-4"><label>Rep. ID</label><input type="text" name="rep_identity_card" class="form-control"/></div>
+                                    </div>
+                                </div>
+
+                                <h5 class="text-primary border-bottom pb-2 my-4">II. ESTABLISHMENT DATA</h5>
+                                <div class="form-group"><label>Commercial Name *</label><input type="text" name="commercial_name" class="form-control" required="1"/></div>
+                                <div class="form-group"><label>Exact Address *</label><textarea name="address" class="form-control" rows="2" required="1"></textarea></div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6"><label>Municipality</label><input type="text" name="municipality" class="form-control"/></div>
+                                    <div class="form-group col-md-6"><label>Parish</label><input type="text" name="parish" class="form-control"/></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6"><label>Email *</label><input type="email" name="email" class="form-control" required="1"/></div>
+                                    <div class="form-group col-md-6"><label>Phone</label><input type="text" name="phone" class="form-control"/></div>
+                                </div>
+
+                                <h5 class="text-primary border-bottom pb-2 my-4">IV. REQUIREMENTS (PDF Only)</h5>
+                                <div class="form-group"><label>ID &amp; RIF Copy *</label><input type="file" name="req_id_rif" class="form-control-file" accept=".pdf" required="1"/></div>
+                                <div class="form-group"><label>Bank Certification *</label><input type="file" name="req_bank_cert" class="form-control-file" accept=".pdf" required="1"/></div>
+                                
+                                <div id="requirements_legal" style="display: none;">
+                                    <div class="form-group"><label>Constitutive Document</label><input type="file" name="req_charter_doc" class="form-control-file" accept=".pdf"/></div>
+                                </div>
+
+                                <div class="custom-control custom-checkbox my-4">
+                                    <input type="checkbox" class="custom-control-input" id="check_sworn" name="sworn_declaration" required="1"/>
+                                    <label class="custom-control-label" for="check_sworn">
+                                        I declare that this establishment complies with the prohibition of sales to minors.
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-block btn-lg">Submit Census Registration</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    function toggleFormFields() {
+                        var isNatural = document.getElementById('person_natural').checked;
+                        document.getElementById('section_natural').style.display = isNatural ? 'block' : 'none';
+                        document.getElementById('section_legal').style.display = isNatural ? 'none' : 'block';
+                        document.getElementById('requirements_legal').style.display = isNatural ? 'none' : 'block';
+                    }
+                </script>
+            </t>
+        </template>
+
+        <template id="template_register_success" name="Registration Successful">
+            <t t-call="website.layout">
+                <div class="container my-5 text-center">
+                    <div class="card p-5 border-0 shadow-sm bg-light">
+                        <div class="text-success display-3 mb-3">✓</div>
+                        <h2 class="text-dark font-weight-bold">Registration Received Successfully!</h2>
+                        <p class="lead text-muted">Your documentation is now under review by the Institute.</p>
+                        <div class="alert alert-info d-inline-block px-5 my-3">
+                            Assigned Census Code: <h4 class="font-weight-bold m-0 text-primary"><t t-out="census_code"/></h4>
+                        </div>
+                        <p class="small text-secondary">Once approved, you will receive an email to set your portal credentials.</p>
+                        <div class="mt-4"><a href="/" class="btn btn-primary px-4">Return Home</a></div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,148 @@
+
+<odoo>
+    <data>
+        <record id="seq_betting_center_census" model="ir.sequence">
+            <field name="name">Betting Center Census Sequence</field>
+            <field name="code">betting.center.census.seq</field>
+            <field name="prefix">CENSUS-%(year)s-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <record id="view_betting_center_census_form" model="ir.ui.view">
+            <field name="name">betting.center.census.form</field>
+            <field name="model">betting.center.census</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_approve_and_create_user" 
+                                string="Approve and Create User" 
+                                type="object" 
+                                class="oe_highlight" 
+                                invisible="state != 'review'"/>
+                        <button name="action_reject" 
+                                string="Reject Registration" 
+                                type="object" 
+                                class="btn-danger" 
+                                invisible="state != 'review'"/>
+                                
+                        <field name="state" widget="statusbar" statusbar_visible="draft,review,approved"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="census_code"/></h1>
+                        </div>
+                        
+                        <group>
+                            <field name="person_type" widget="radio" options="{'horizontal': true}"/>
+                        </group>
+
+                        <notebook>
+                            <page string="I. Applicant Data">
+                                <group invisible="person_type != 'natural'">
+                                    <field name="full_name"/>
+                                    <field name="identity_card"/>
+                                    <field name="rif_natural"/>
+                                    <field name="marital_status"/>
+                                    <field name="nationality"/>
+                                </group>
+                                <group invisible="person_type != 'legal'">
+                                    <field name="business_name"/>
+                                    <field name="rif_legal"/>
+                                    <field name="registry_number"/>
+                                    <field name="social_objective"/>
+                                    <field name="legal_representative"/>
+                                    <field name="rep_identity_card"/>
+                                </group>
+                            </page>
+                            
+                            <page string="II. Establishment">
+                                <group>
+                                    <field name="commercial_name"/>
+                                    <field name="address"/>
+                                    <group>
+                                        <field name="municipality"/>
+                                        <field name="parish"/>
+                                    </group>
+                                    <group>
+                                        <field name="municipal_license"/>
+                                        <field name="phone"/>
+                                        <field name="email"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="III. Operations">
+                                <group>
+                                    <field name="commercial_partner"/>
+                                    <field name="betting_software"/>
+                                    <field name="terminal_count"/>
+                                </group>
+                                <group string="Games Offered">
+                                    <field name="game_animalitos"/>
+                                    <field name="game_traditional_lottery"/>
+                                    <field name="game_others"/>
+                                </group>
+                            </page>
+
+                            <page string="IV. Requirements">
+                                <group string="Base Documents">
+                                    <field name="req_id_rif"/>
+                                    <field name="req_bank_cert"/>
+                                    <field name="req_funds_declaration"/>
+                                    <field name="req_property_doc"/>
+                                    <field name="req_contract_partner"/>
+                                </group>
+                                <group string="Legal Person Documents" invisible="person_type != 'legal'">
+                                    <field name="req_charter_doc"/>
+                                    <field name="req_shareholders"/>
+                                    <field name="req_tax_declaration"/>
+                                    <field name="req_bank_cert_legal"/>
+                                </group>
+                            </page>
+
+                            <page string="V. Payments and Validation">
+                                <group string="Payment Constancy">
+                                    <field name="payment_reference"/>
+                                    <field name="payment_date"/>
+                                    <field name="payment_amount"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </group>
+                                <group string="Sworn Declaration">
+                                    <field name="sworn_declaration"/>
+                                    <field name="signature" widget="signature"/>
+                                </group>
+                                <group string="For Internal Use Only">
+                                    <field name="reception_date"/>
+                                    <field name="receiver_user_id"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_betting_center_census_list" model="ir.ui.view">
+            <field name="name">betting.center.census.list</field>
+            <field name="model">betting.center.census</field>
+            <field name="arch" type="xml">
+                <list decoration-info="state == 'review'" decoration-success="state == 'approved'" decoration-danger="state == 'rejected'">
+                    <field name="census_code"/>
+                    <field name="commercial_name"/>
+                    <field name="person_type"/>
+                    <field name="municipality"/>
+                    <field name="commercial_partner"/>
+                    <field name="reception_date"/>
+                    <field name="state" widget="badge"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="action_betting_center_census" model="ir.actions.act_window">
+            <field name="name">Betting Center Census</field>
+            <field name="res_model">betting.center.census</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+    </data>
+</odoo> 

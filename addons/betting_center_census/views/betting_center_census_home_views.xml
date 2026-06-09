@@ -1,0 +1,31 @@
+<odoo>
+    <template id="census_invitation_modal" inherit_id="website.homepage" name="Census Invitation Modal">
+        <xpath expr="//div[@id='wrap']" position="after">
+            <div class="modal fade" id="censusModal" tabindex="-1" role="dialog" aria-labelledby="censusModalLabel" aria-hidden="true" >
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content shadow-lg border-0">
+                        <div class="modal-header bg-primary text-white border-0">
+                            <h5 class="modal-title font-weight-bold" id="censusModalLabel">¡Únete al Censo IOBPAS!</h5>
+                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                <!-- <span aria-hidden="true">&times;</span> -->
+                            </button>
+                        </div>
+                        <div class="modal-body text-center p-4">
+                            <i class="fa fa-shield fa-4x text-warning mb-3"></i>
+                            <h4 class="font-weight-bold">¡Sé parte del cambio!</h4>
+                            <p class="text-muted my-3">
+                                ¿Qué estás esperando para registrarte en el censo y formar parte de la solución a la lotería ilícita?
+                                Legaliza tu establecimiento y opera bajo los estándares del Instituto.
+                            </p>
+                        </div>
+                        <div class="modal-footer border-0 justify-content-center">
+                            <a href="/census/register" class="btn btn-primary btn-lg px-5">¡Registrarme Ahora!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <script type="text/javascript" src="/betting_center_census/static/src/modal_loader.js"></script>
+
+        </xpath>
+    </template>
+</odoo>

@@ -27,11 +27,7 @@
         'views/betting_center_census_home_views.xml',
         'views/ir_menu_views.xml',
     ],
-    'assets': {
-        'web.assets_frontend': [
-            'betting_center_census/static/src/modal_loader.js',
-        ],
-    },
+
     'installable': True,
     'application': True,
     'license': 'LGPL-3',

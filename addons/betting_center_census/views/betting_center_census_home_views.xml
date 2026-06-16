@@ -4,23 +4,66 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#censusModal" style="display: none">
                 Launch demo modal
             </button>
-            <div class="modal fade" id="censusModal" tabindex="-1" aria-labelledby="censusModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content shadow-lg border-0">
-                        <div class="modal-header bg-primary text-white">
-                            <h5 class="modal-title" id="censusModalLabel">¡Únete al Censo IOBPAS Mérida!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      <div class="modal fade" id="censusModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="loteriaInitialModalLabel" aria-hidden="true" style="font-family: 'Century Gothic', sans-serif;">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content text-dark border-0 style-popup-institucional" style="background: #ffffff; border-radius: 14px; overflow: hidden;">
+                        
+                        <div style="height: 6px; background-color: #d0142c; width: 100%;"></div>
+                        
+                        <div class="d-flex justify-content-end p-2 position-absolute end-0">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar" style="font-size: 14px; opacity: 0.7; z-index: 10;"></button>
                         </div>
-                        <div class="modal-body text-center p-4">
-                            <i class="fa fa-shield fa-4x text-warning mb-3"></i>
-                            <h4 class="font-weight-bold text-dark mb-3">¡Sé parte del cambio legal!</h4>
-                            <p class="text-muted">
-                                ¿Qué estás esperando para registrarte en el censo y formar parte de la solución a la lotería ilícita en Mérida?
-                                Legaliza tu centro de apuestas y opera bajo los estándares del Instituto.
-                            </p>
+
+                        <div class="modal-body p-4 p-md-5">
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom" style="border-color: rgba(9,9,21,0.1) !important;">
+                                <a href="https://merida.gob.ve" target="_blank">
+                                    <img src="/betting_center_census/static/src/img/logo_gobernacion.png" alt="Gobernación" style="max-height: 50px; width: auto;"/>
+                                </a>
+                                <a href="/">
+                                    <img src="/betting_center_census/static/src/img/LOTERIA.png" alt="Lotería de Mérida" style="max-height: 65px; width: auto;"/>
+                                </a>
+                                <a href="/about-us">
+                                    <img src="/betting_center_census/static/src/img/logo_justicia_paz.png" alt="IBPAS" style="max-height: 50px; width: auto;"/>
+                                </a>
+                            </div>
+
+                            <div class="text-center my-3">
+                                <span class="badge text-white mb-2 px-3 py-2 text-uppercase fw-bold" style="background-color: #017f33; letter-spacing: 1px; font-size: 11px;">
+                                    Comunicado Obligatorio
+                                </span>
+                                <h3 class="fw-bold mt-2 text-uppercase mb-4" style="color: #090915; font-size: 22px; letter-spacing: -0.5px;">
+                                    Censo, Registro y Actualización <br class="d-none d-md-block"/> de Centros de Apuestas 2026
+                                </h3>
+                            </div>
+
+                            <div class="px-2 text-secondary justify-text" style="font-size: 14px; line-height: 1.6; text-align: justify;">
+                                <p>
+                                    El <strong>Instituto de Beneficencia Pública y Asistencia Social del Estado Bolivariano de Mérida ("Lotería de Mérida")</strong>, dando estricto cumplimiento al Artículo 19 de la Ley dictada en Gaceta Oficial N° 6.223, notifica formalmente a todas las comercializadoras, operadores y puntos de venta de juegos de azar que hacen vida en el territorio regional.
+                                </p>
+                                <p class="bg-light p-3 border-start border-3 my-3" style="border-color: #d0142c !important; color: #090915;">
+                                    <strong>Es de carácter OBLIGATORIO</strong> presentar la Declaración Jurada y consignar la documentación técnica, operativa y los recaudos legales solicitados en este portal antes del inicio de los despliegues de la Gerencia de Fiscalización.
+                                </p>
+                                <p>
+                                    La omisión o el suministro de información falsa o incompleta acarreará el inicio de los procedimientos administrativos, la suspensión de actividades y las sanciones penales correspondientes estipuladas por la Ley Nacional de Loterías.
+                                </p>
+                            </div>
+
+                            <div class="text-center mt-5">
+                                <a href="/census/register" class="btn text-white fw-bold px-5 py-2 text-uppercase btn-lg shadow" style="background-color: #d0142c; border-radius: 30px; font-size: 14px; letter-spacing: 0.5px;">
+                                    Iniciar Registro de Censo
+                                </a>
+                                <div class="mt-3">
+                                    <a href="#" data-bs-dismiss="modal" class="text-muted small text-decoration-underline">
+                                        Continuar al portal institucional
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="modal-footer justify-content-center border-0">
-                            <a href="/census/register" class="btn btn-primary btn-lg px-5">¡Registrarme Ahora!</a>
+                        
+                        <div class="text-center py-2 bg-light text-muted border-top" style="font-size: 11px;">
+                            <i>Instituto de Beneficencia Pública y Asistencia Social del Estado Mérida - ¡Garante de la Justicia Social!</i>
                         </div>
                     </div>
                 </div>
@@ -28,5 +71,3 @@
         </xpath>
     </template>
 </odoo>
-
-

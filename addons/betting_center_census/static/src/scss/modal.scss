@@ -88,3 +88,13 @@
         }
     }
 }
+
+/* Selecciona el contenedor principal del header en Odoo */
+#wrapwrap > header {
+    margin-top: 150px !important; /* Ajusta este valor según cuánto quieras bajarlo */
+    position: relative; /* Cambia el comportamiento fijo */
+    width: 90%; /* Opcional: para centrarlo si ya no ocupa el 100% */   
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1000;
+}

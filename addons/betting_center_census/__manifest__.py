@@ -23,6 +23,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/betting_center_census_views.xml',
+        'views/betting_center_census_home_header_view.xml',
         'views/betting_center_templates.xml',
         'views/betting_center_census_home_views.xml',
         'views/ir_menu_views.xml',
@@ -31,6 +32,7 @@
     'assets': {
         'web.assets_frontend': [
             'betting_center_census/static/src/scss/modal.scss',
+            # 'betting_center_census/static/src/scss/modal_animations.scss',
             'betting_center_census/static/src/js/modal_loader.js',
         ],
     },

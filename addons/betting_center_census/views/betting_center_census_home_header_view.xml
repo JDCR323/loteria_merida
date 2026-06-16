@@ -10,7 +10,7 @@
             <div class=" my-4" style="font-family: 'Century Gothic', sans-serif;">
                 <div class="card shadow-sm border-0 bg-white p-3" >
                     
-                    <div class="d-flex justify-content-between align-items-center pb-5 border-bottom" style="border-color: #090915 !important;">
+                    <div class="d-flex justify-content-between align-items-center pb-3 border-bottom" style="border-color: #090915 !important;">
                         
                         <a href="https://merida.gob.ve" target="_blank" class="navbar-brand m-0 p-0" title="Gobernación del Estado Bolivariano de Mérida">
                             <img src="/betting_center_census/static/src/img/logo_gobernacion.png" 
@@ -24,10 +24,10 @@
                                  style="width: 200px; object-fit: contain;"/>
                         </a>
 
-                        <a href="/about-us" class="" title="Instituto de Beneficencia Pública y Asistencia Social">
-                            <img src="/betting_center_census/static/src/img/logo_justicia_paz.png"    
+                        <a href="/about-us" class="navbar-brand m-0 p-0" title="Instituto de Beneficencia Pública y Asistencia Social">
+                            <img src="/betting_center_census/static/src/img/logo_impprijp.png"    
                                  alt="IBPAS Mérida" 
-                                 style="   "/>
+                                 style="max-height: 120px; width: 200px;    "/>
                         </a>
 
                     </div>

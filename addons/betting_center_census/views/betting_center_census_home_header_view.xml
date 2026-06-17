@@ -27,7 +27,7 @@
                         <a href="/about-us" class="navbar-brand m-0 p-0" title="Instituto de Beneficencia Pública y Asistencia Social">
                             <img src="/betting_center_census/static/src/img/logo_impprijp.png"    
                                  alt="IBPAS Mérida" 
-                                 style="max-height: 120px; width: 200px;    "/>
+                                 style="width: 200px; object-fit: contain;"/>
                         </a>
 
                     </div>

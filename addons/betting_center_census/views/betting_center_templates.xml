@@ -1,89 +1,234 @@
-
 <odoo>
     <data>
-        <template id="template_register_census" name="Census Registration Form">
+      <template id="template_register_census" name="Formulario de Censo">
             <t t-call="website.layout">
-                <div id="wrap" class="container my-5">
+                <div id="wrap" class="container my-5" style="font-family: 'Century Gothic', sans-serif;">
                     <div class="row justify-content-center">
-                        <div class="col-lg-9 bg-white p-5 shadow-sm rounded">
-                            <h2 class="text-center mb-4 text-dark font-weight-bold">Betting Center Census - IOBPAS</h2>
+                        <div class="col-lg-10 bg-white p-5 shadow-sm rounded">
+                            <div class="text-center mb-4">
+                                <h3 class="text-dark fw-bold">REGISTRO DE SUJETOS PASIVOS DE LOTERÍA</h3>
+                                <p class="text-muted small">Este formulario tiene carácter de Declaración Jurada. La falsedad de los datos suministrados acarreará las sanciones civiles y penales correspondientes.</p>
+                                <p class="text-danger small fw-bold">Los campos marcados con un asterisco (*) son obligatorios para iniciar el trámite.</p>
+                            </div>
                             
                             <form action="/census/register" method="post" enctype="multipart/form-data" class="needs-validation">
                                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                 
-                                <h5 class="text-primary border-bottom pb-2 mb-3">I. APPLICANT DATA</h5>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label font-weight-bold">Person Type:</label>
+                                <h5 class="border-bottom pb-2 mb-4" style="color: #017f33;">I. DATOS DEL SUJETO PASIVO (SOLICITANTE)</h5>
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label fw-bold">Tipo de Persona: *</label>
                                     <div class="col-sm-9 d-flex align-items-center">
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="person_natural" name="person_type" value="natural" class="custom-control-input" checked="checked" onclick="toggleFormFields()"/>
-                                            <label class="custom-control-label" for="person_natural">Natural</label>
+                                        <div class="form-check me-3">
+                                            <input type="radio" id="person_natural" name="person_type" value="natural" class="form-check-input" checked="checked" onclick="toggleFormFields()"/>
+                                            <label class="form-check-label" for="person_natural">Natural</label>
                                         </div>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="person_legal" name="person_type" value="legal" class="custom-control-input" onclick="toggleFormFields()"/>
-                                            <label class="custom-control-label" for="person_legal">Legal</label>
+                                        <div class="form-check">
+                                            <input type="radio" id="person_legal" name="person_type" value="legal" class="form-check-input" onclick="toggleFormFields()"/>
+                                            <label class="form-check-label" for="person_legal">Jurídica</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div id="section_natural">
-                                    <div class="form-group">
-                                        <label>Full Name</label>
-                                        <input type="text" name="full_name" class="form-control"/>
+                                    <div class="mb-3">
+                                        <label class="form-label">Nombres y Apellidos *</label>
+                                        <input type="text" id="req_full_name" name="full_name" class="form-control" required="1"/>
                                     </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6"><label>Identity Card</label><input type="text" name="identity_card" class="form-control"/></div>
-                                        <div class="form-group col-md-6"><label>R.I.F. (Valid)</label><input type="text" name="rif_natural" class="form-control"/></div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Cédula de Identidad *</label>
+                                            <input type="text" id="req_identity_card" name="identity_card" class="form-control" required="1"/>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">R.I.F. (Vigente) *</label>
+                                            <input type="text" id="req_rif_natural" name="rif_natural" class="form-control" required="1"/>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Estado Civil *</label>
+                                            <select id="req_civil_status" name="civil_status" class="form-select" required="1">
+                                                <option value="" disabled="1" selected="1">Seleccione...</option>
+                                                <option value="soltero">Soltero(a)</option>
+                                                <option value="casado">Casado(a)</option>
+                                                <option value="divorciado">Divorciado(a)</option>
+                                                <option value="viudo">Viudo(a)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Nacionalidad *</label>
+                                            <input type="text" id="req_nationality" name="nationality" class="form-control" required="1"/>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div id="section_legal" style="display: none;">
-                                    <div class="form-group">
-                                        <label>Business Name</label>
-                                        <input type="text" name="business_name" class="form-control"/>
+                                    <div class="mb-3">
+                                        <label class="form-label">Razón Social *</label>
+                                        <input type="text" id="req_business_name" name="business_name" class="form-control"/>
                                     </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6"><label>Legal R.I.F.</label><input type="text" name="rif_legal" class="form-control"/></div>
-                                        <div class="form-group col-md-6"><label>Mercantile Registry No.</label><input type="text" name="registry_number" class="form-control"/></div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">R.I.F. Jurídico *</label>
+                                            <input type="text" id="req_rif_legal" name="rif_legal" class="form-control"/>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Nº Registro Mercantil *</label>
+                                            <input type="text" id="req_registry_number" name="registry_number" class="form-control"/>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Social Objective</label>
-                                        <textarea name="social_objective" class="form-control" placeholder="Exclusive to lottery exploitation"></textarea>
+                                    <div class="mb-3">
+                                        <label class="form-label">Objeto Social</label>
+                                        <textarea name="social_objective" class="form-control" placeholder="(Debe ser exclusivo para explotación de juegos de loteria)" rows="2"></textarea>
                                     </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-8"><label>Legal Representative</label><input type="text" name="legal_representative" class="form-control"/></div>
-                                        <div class="form-group col-md-4"><label>Rep. ID</label><input type="text" name="rep_identity_card" class="form-control"/></div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Representante Legal *</label>
+                                            <input type="text" id="req_legal_rep" name="legal_representative" class="form-control"/>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Cédula del Representante *</label>
+                                            <input type="text" id="req_rep_id" name="rep_identity_card" class="form-control"/>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <h5 class="text-primary border-bottom pb-2 my-4">II. ESTABLISHMENT DATA</h5>
-                                <div class="form-group"><label>Commercial Name *</label><input type="text" name="commercial_name" class="form-control" required="1"/></div>
-                                <div class="form-group"><label>Exact Address *</label><textarea name="address" class="form-control" rows="2" required="1"></textarea></div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6"><label>Municipality</label><input type="text" name="municipality" class="form-control"/></div>
-                                    <div class="form-group col-md-6"><label>Parish</label><input type="text" name="parish" class="form-control"/></div>
+                                <h5 class="border-bottom pb-2 my-4" style="color: #017f33;">II. DATOS DEL ESTABLECIMIENTO (CENTRO DE APUESTAS)</h5>
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre Comercial *</label>
+                                    <input type="text" name="commercial_name" class="form-control" required="1"/>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6"><label>Email *</label><input type="email" name="email" class="form-control" required="1"/></div>
-                                    <div class="form-group col-md-6"><label>Phone</label><input type="text" name="phone" class="form-control"/></div>
+                                <div class="mb-3">
+                                    <label class="form-label">Dirección Exacta *</label>
+                                    <textarea name="address" class="form-control" rows="2" required="1"></textarea>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Municipio *</label>
+                                        <input type="text" name="municipality" class="form-control" required="1"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Parroquia *</label>
+                                        <input type="text" name="parish" class="form-control" required="1"/>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label">N° Licencia Municipal</label>
+                                        <input type="text" name="municipal_license" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Teléfono / Celular *</label>
+                                        <input type="text" name="phone" class="form-control" required="1"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Correo Electrónico *</label>
+                                        <input type="email" name="email" class="form-control" required="1"/>
+                                    </div>
                                 </div>
 
-                                <h5 class="text-primary border-bottom pb-2 my-4">IV. REQUIREMENTS (PDF Only)</h5>
-                                <div class="form-group"><label>ID &amp; RIF Copy *</label><input type="file" name="req_id_rif" class="form-control-file" accept=".pdf" required="1"/></div>
-                                <div class="form-group"><label>Bank Certification *</label><input type="file" name="req_bank_cert" class="form-control-file" accept=".pdf" required="1"/></div>
-                                
-                                <div id="requirements_legal" style="display: none;">
-                                    <div class="form-group"><label>Constitutive Document</label><input type="file" name="req_charter_doc" class="form-control-file" accept=".pdf"/></div>
+                                <h5 class="border-bottom pb-2 my-4" style="color: #017f33;">III. INFORMACIÓN OPERATIVA Y TÉCNICA</h5>
+                                <div class="row mb-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label">Comercializadora *</label>
+                                        <input type="text" name="commercializer" class="form-control" required="1"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Software de Apuestas *</label>
+                                        <input type="text" name="software" class="form-control" required="1"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">N° de Terminales *</label>
+                                        <input type="number" name="terminals_count" class="form-control" required="1" min="1"/>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label d-block fw-bold">Juegos que comercializa: *</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="game_animalitos" id="game1"/>
+                                        <label class="form-check-label" for="game1">Animalitos</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="game_traditional" id="game2"/>
+                                        <label class="form-check-label" for="game2">Lotería Tradicional</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="game_other_check" id="game3" onchange="toggleOthers()"/>
+                                        <label class="form-check-label" for="game3">Otros:</label>
+                                    </div>
+                                    <input type="text" id="game_other_text" name="game_other_text" class="form-control mt-2 w-auto" placeholder="Especifique..." style="display: none;"/>
                                 </div>
 
-                                <div class="custom-control custom-checkbox my-4">
-                                    <input type="checkbox" class="custom-control-input" id="check_sworn" name="sworn_declaration" required="1"/>
-                                    <label class="custom-control-label" for="check_sworn">
-                                        I declare that this establishment complies with the prohibition of sales to minors.
+                                <h5 class="border-bottom pb-2 my-4" style="color: #017f33;">IV. LISTA DE RECAUDOS (OPCIONAL EN ESTE PASO, SE PUEDE ENTREGAR EN FÍSICO)</h5>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label small">1. Copia de Cédula de Identidad y R.I.F. vigente</label>
+                                        <input type="file" name="req_id_rif" class="form-control form-control-sm" accept=".pdf"/>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label small">2. Declaración Jurada de Origen Lícito de Fondos</label>
+                                        <input type="file" name="req_funds_origin" class="form-control form-control-sm" accept=".pdf"/>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label small">3. Copia de documento de propiedad o contrato de arrendamiento</label>
+                                        <input type="file" name="req_property" class="form-control form-control-sm" accept=".pdf"/>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label small">4. Aval o Licencia vigente de CONALOT</label>
+                                        <input type="file" name="req_conalot" class="form-control form-control-sm" accept=".pdf"/>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label small">5. Dos (2) Fotos del Establecimiento</label>
+                                        <input type="file" name="req_photos" class="form-control form-control-sm" accept=".pdf,.jpg,.jpeg,.png" multiple="multiple"/>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label small">6. Copia del Documento Constitutivo</label>
+                                        <input type="file" name="req_charter" class="form-control form-control-sm" accept=".pdf"/>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label small">7. Relación de accionistas</label>
+                                        <input type="file" name="req_shareholders" class="form-control form-control-sm" accept=".pdf"/>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label small">8. Copia de la última declaración de I.S.L.R.</label>
+                                        <input type="file" name="req_islr" class="form-control form-control-sm" accept=".pdf"/>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label small">9. Licencia de Actividades Económicas</label>
+                                        <input type="file" name="req_economic_license" class="form-control form-control-sm" accept=".pdf"/>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label small">10. Registro Mercantil de la Empresa</label>
+                                        <input type="file" name="req_mercantile_registry" class="form-control form-control-sm" accept=".pdf"/>
+                                    </div>
+                                </div>
+
+                                <h5 class="border-bottom pb-2 my-4" style="color: #017f33;">V. CONSTANCIA DE PAGO (GASTOS ADMINISTRATIVOS)</h5>
+                                <p class="small text-muted">(Nota: Pago realizado a la cuenta corriente institucional autorizada del IOBPAS)</p>
+                                <div class="row mb-4">
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">N° de Referencia *</label>
+                                        <input type="text" name="payment_reference" class="form-control" required="1"/>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Fecha de Pago *</label>
+                                        <input type="date" name="payment_date" class="form-control" required="1"/>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Monto (Bs.) *</label>
+                                        <input type="number" step="0.01" name="payment_amount" class="form-control" required="1"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-check my-4 p-4 bg-light border rounded">
+                                    <input type="checkbox" class="form-check-input ms-1" id="check_sworn" name="sworn_declaration" required="1"/>
+                                    <label class="form-check-label ms-4 fw-bold" for="check_sworn" style="color: #090915;">
+                                        VI. DECLARACIÓN JURADA Y FIRMA<br/>
+                                        Declaro bajo fe de juramento que el establecimiento aquí registrado cumple con la prohibición de venta a menores de edad y que los equipos/sistemas utilizados están sujetos a la homologación del Instituto. *
                                     </label>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary btn-block btn-lg">Submit Census Registration</button>
+                                <button type="submit" class="btn text-white w-100 btn-lg shadow-sm" style="background-color: #d0142c; border-radius: 8px;">Enviar Registro de Censo</button>
                             </form>
                         </div>
                     </div>
@@ -92,26 +237,57 @@
                 <script type="text/javascript">
                     function toggleFormFields() {
                         var isNatural = document.getElementById('person_natural').checked;
+                        
                         document.getElementById('section_natural').style.display = isNatural ? 'block' : 'none';
                         document.getElementById('section_legal').style.display = isNatural ? 'none' : 'block';
-                        document.getElementById('requirements_legal').style.display = isNatural ? 'none' : 'block';
+                        
+                        document.getElementById('req_full_name').required = isNatural;
+                        document.getElementById('req_identity_card').required = isNatural;
+                        document.getElementById('req_rif_natural').required = isNatural;
+                        document.getElementById('req_civil_status').required = isNatural;
+                        document.getElementById('req_nationality').required = isNatural;
+                        
+                        document.getElementById('req_business_name').required = !isNatural;
+                        document.getElementById('req_rif_legal').required = !isNatural;
+                        document.getElementById('req_registry_number').required = !isNatural;
+                        document.getElementById('req_legal_rep').required = !isNatural;
+                        document.getElementById('req_rep_id').required = !isNatural;
                     }
+
+                    function toggleOthers() {
+                        var isOthersChecked = document.getElementById('game3').checked;
+                        var otherTextInput = document.getElementById('game_other_text');
+                        
+                        if (isOthersChecked) {
+                            otherTextInput.style.display = 'inline-block';
+                            otherTextInput.required = true;
+                        } else {
+                            otherTextInput.style.display = 'none';
+                            otherTextInput.required = false;
+                            otherTextInput.value = '';
+                        }
+                    }
+
+                    document.addEventListener("DOMContentLoaded", function() {
+                        toggleFormFields();
+                        toggleOthers();
+                    });
                 </script>
             </t>
         </template>
 
-        <template id="template_register_success" name="Registration Successful">
+                <template id="template_register_success" name="Registro Exitoso">
             <t t-call="website.layout">
-                <div class="container my-5 text-center">
-                    <div class="card p-5 border-0 shadow-sm bg-light">
-                        <div class="text-success display-3 mb-3">✓</div>
-                        <h2 class="text-dark font-weight-bold">Registration Received Successfully!</h2>
-                        <p class="lead text-muted">Your documentation is now under review by the Institute.</p>
-                        <div class="alert alert-info d-inline-block px-5 my-3">
-                            Assigned Census Code: <h4 class="font-weight-bold m-0 text-primary"><t t-out="census_code"/></h4>
+                <div class="container my-5 text-center" style="font-family: 'Century Gothic', sans-serif;">
+                    <div class="card p-5 border-0 shadow-sm" style="background-color: #f8f9fa;">
+                        <div class="mb-3" style="color: #017f33; font-size: 4rem;">✓</div>
+                        <h2 class="text-dark fw-bold">¡Registro Recibido con Éxito!</h2>
+                        <p class="lead text-muted">Su documentación se encuentra en revisión por el Instituto.</p>
+                        <div class="alert d-inline-block px-5 my-3" style="background-color: #e9ecef; border-left: 4px solid #d0142c;">
+                            Código de Censo Asignad: <h4 class="fw-bold m-0" style="color: #090915;"><t t-out="census_code"/></h4>
                         </div>
-                        <p class="small text-secondary">Once approved, you will receive an email to set your portal credentials.</p>
-                        <div class="mt-4"><a href="/" class="btn btn-primary px-4">Return Home</a></div>
+                        <p class="small text-secondary">Una vez aprobado, recibirá un correo electrónico con sus credenciales de acceso al portal.</p>
+                        <div class="mt-4"><a href="/" class="btn text-white px-4" style="background-color: #017f33; border-radius: 20px;">Volver al Inicio</a></div>
                     </div>
                 </div>
             </t>

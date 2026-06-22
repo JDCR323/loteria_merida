@@ -1,10 +1,9 @@
-
 <odoo>
     <data>
         <record id="seq_betting_center_census" model="ir.sequence">
-            <field name="name">Betting Center Census Sequence</field>
+            <field name="name">Secuencia Censo Lotería</field>
             <field name="code">betting.center.census.seq</field>
-            <field name="prefix">CENSUS-%(year)s-</field>
+            <field name="prefix">CENSO-%(year)s-</field>
             <field name="padding">5</field>
         </record>
 
@@ -15,12 +14,12 @@
                 <form>
                     <header>
                         <button name="action_approve_and_create_user" 
-                                string="Approve and Create User" 
+                                string="Aprobar y Generar Usuario" 
                                 type="object" 
                                 class="oe_highlight" 
                                 invisible="state != 'review'"/>
                         <button name="action_reject" 
-                                string="Reject Registration" 
+                                string="Rechazar" 
                                 type="object" 
                                 class="btn-danger" 
                                 invisible="state != 'review'"/>
@@ -30,6 +29,7 @@
                     <sheet>
                         <div class="oe_title">
                             <h1><field name="census_code"/></h1>
+                            <h2><field name="commercial_name" placeholder="Nombre del Establecimiento"/></h2>
                         </div>
                         
                         <group>
@@ -37,12 +37,12 @@
                         </group>
 
                         <notebook>
-                            <page string="I. Applicant Data">
+                            <page string="Datos del Solicitante">
                                 <group invisible="person_type != 'natural'">
                                     <field name="full_name"/>
                                     <field name="identity_card"/>
                                     <field name="rif_natural"/>
-                                    <field name="marital_status"/>
+                                    <field name="civil_status"/>
                                     <field name="nationality"/>
                                 </group>
                                 <group invisible="person_type != 'legal'">
@@ -55,65 +55,69 @@
                                 </group>
                             </page>
                             
-                            <page string="II. Establishment">
+                            <page string="Establecimiento">
                                 <group>
-                                    <field name="commercial_name"/>
                                     <field name="address"/>
                                     <group>
                                         <field name="municipality"/>
                                         <field name="parish"/>
+                                        <field name="municipal_license"/>
                                     </group>
                                     <group>
-                                        <field name="municipal_license"/>
                                         <field name="phone"/>
                                         <field name="email"/>
                                     </group>
                                 </group>
                             </page>
 
-                            <page string="III. Operations">
+                            <page string="Operativa">
                                 <group>
-                                    <field name="commercial_partner"/>
-                                    <field name="betting_software"/>
-                                    <field name="terminal_count"/>
+                                    <field name="commercializer"/>
+                                    <field name="software"/>
+                                    <field name="terminals_count"/>
                                 </group>
-                                <group string="Games Offered">
+                                <group string="Juegos Comercializados">
                                     <field name="game_animalitos"/>
-                                    <field name="game_traditional_lottery"/>
-                                    <field name="game_others"/>
+                                    <field name="game_traditional"/>
+                                    <label for="game_other_check" string="Otros Juegos"/>
+                                    <div class="o_row">
+                                        <field name="game_other_check"/>
+                                        <field name="game_other_text" placeholder="Especifique..." invisible="game_other_check == False"/>
+                                    </div>
                                 </group>
                             </page>
 
-                            <page string="IV. Requirements">
-                                <group string="Base Documents">
-                                    <field name="req_id_rif"/>
-                                    <field name="req_bank_cert"/>
-                                    <field name="req_funds_declaration"/>
-                                    <field name="req_property_doc"/>
-                                    <field name="req_contract_partner"/>
+                            <page string="Recaudos Digitales">
+                                <group string="Documentación General">
+                                    <field name="req_id_rif" filename="req_id_rif_name"/>
+                                    <field name="req_funds_origin" filename="req_funds_origin_name"/>
+                                    <field name="req_property" filename="req_property_name"/>
+                                    <field name="req_conalot" filename="req_conalot_name"/>
+                                    <field name="req_photos" filename="req_photos_name"/>
                                 </group>
-                                <group string="Legal Person Documents" invisible="person_type != 'legal'">
-                                    <field name="req_charter_doc"/>
-                                    <field name="req_shareholders"/>
-                                    <field name="req_tax_declaration"/>
-                                    <field name="req_bank_cert_legal"/>
+                                <group string="Documentación Jurídica/Comercial">
+                                    <field name="req_charter" filename="req_charter_name"/>
+                                    <field name="req_shareholders" filename="req_shareholders_name"/>
+                                    <field name="req_islr" filename="req_islr_name"/>
+                                    <field name="req_economic_license" filename="req_economic_license_name"/>
+                                    <field name="req_mercantile_registry" filename="req_mercantile_registry_name"/>
                                 </group>
                             </page>
 
-                            <page string="V. Payments and Validation">
-                                <group string="Payment Constancy">
+                            <page string="Pagos y Control">
+                                <group string="Constancia de Pago">
                                     <field name="payment_reference"/>
                                     <field name="payment_date"/>
                                     <field name="payment_amount"/>
                                     <field name="currency_id" invisible="1"/>
                                 </group>
-                                <group string="Sworn Declaration">
+                                <group string="Declaración Jurada">
                                     <field name="sworn_declaration"/>
-                                    <field name="signature" widget="signature"/>
                                 </group>
-                                <group string="For Internal Use Only">
+                                <group string="Uso Interno del IOBPAS">
                                     <field name="reception_date"/>
                                     <field name="receiver_user_id"/>
+                                    <field name="user_id"/>
                                 </group>
                             </page>
                         </notebook>
@@ -131,7 +135,7 @@
                     <field name="commercial_name"/>
                     <field name="person_type"/>
                     <field name="municipality"/>
-                    <field name="commercial_partner"/>
+                    <field name="commercializer"/>
                     <field name="reception_date"/>
                     <field name="state" widget="badge"/>
                 </list>
@@ -139,10 +143,10 @@
         </record>
 
         <record id="action_betting_center_census" model="ir.actions.act_window">
-            <field name="name">Betting Center Census</field>
+            <field name="name">Gestión de Censos Lotería</field>
             <field name="res_model">betting.center.census</field>
             <field name="view_mode">list,form</field>
         </record>
 
     </data>
-</odoo> 
+</odoo>

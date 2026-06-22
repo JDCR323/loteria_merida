@@ -3,111 +3,88 @@ from odoo.exceptions import ValidationError
 
 class BettingCenterCensus(models.Model):
     _name = 'betting.center.census'
-    _description = 'Betting Center Census (IOBPAS)'
+    _description = 'Censo de Centros de Apuestas (IOBPAS)'
     _rec_name = 'census_code'
     _order = 'create_date desc'
 
-    # =================================================================
-    # I. SUBJECT DATA (APPLICANT)
-    # =================================================================
+
     person_type = fields.Selection([
         ('natural', 'Natural'),
-        ('legal', 'Legal')
-    ], string='Person Type', required=True, default='natural')
+        ('legal', 'Jurídica')
+    ], string='Tipo de Persona', required=True, default='natural')
 
-    # A. Natural Person
-    full_name = fields.Char(string='Full Name')
-    identity_card = fields.Char(string='Identity Card')
-    rif_natural = fields.Char(string='R.I.F. (Valid)')
-    marital_status = fields.Selection([
-        ('single', 'Single'),
-        ('married', 'Married'),
-        ('divorced', 'Divorced'),
-        ('widowed', 'Widowed')
-    ], string='Marital Status')
-    nationality = fields.Char(string='Nationality')
+    full_name = fields.Char(string='Nombres y Apellidos')
+    identity_card = fields.Char(string='Cédula de Identidad')
+    rif_natural = fields.Char(string='R.I.F. (Vigente)')
+    civil_status = fields.Selection([
+        ('soltero', 'Soltero(a)'),
+        ('casado', 'Casado(a)'),
+        ('divorciado', 'Divorciado(a)'),
+        ('viudo', 'Viudo(a)')
+    ], string='Estado Civil')
+    nationality = fields.Char(string='Nacionalidad')
 
-    # B. Legal Person
-    business_name = fields.Char(string='Business Name')
-    rif_legal = fields.Char(string='Legal R.I.F.')
-    registry_number = fields.Char(string='Mercantile Registry No.')
-    social_objective = fields.Text(
-        string='Social Objective',
-        help='Must be exclusive to lottery game exploitation'
-    )
-    legal_representative = fields.Char(string='Legal Representative')
-    rep_identity_card = fields.Char(string='Representative ID')
+    business_name = fields.Char(string='Razón Social')
+    rif_legal = fields.Char(string='R.I.F. Jurídico')
+    registry_number = fields.Char(string='Nº Registro Mercantil')
+    social_objective = fields.Text(string='Objeto Social')
+    legal_representative = fields.Char(string='Representante Legal')
+    rep_identity_card = fields.Char(string='Cédula del Representante')
 
-    # =================================================================
-    # II. ESTABLISHMENT DATA (BETTING CENTER)
-    # =================================================================
-    commercial_name = fields.Char(string='Commercial Name', required=True)
-    address = fields.Text(string='Exact Address', required=True)
-    municipality = fields.Char(string='Municipality')
-    parish = fields.Char(string='Parish')
-    municipal_license = fields.Char(string='Municipal License No.')
-    phone = fields.Char(string='Phone Number')
-    email = fields.Char(string='Email')
 
-    # =================================================================
-    # III. OPERATIONAL AND TECHNICAL INFORMATION
-    # =================================================================
-    commercial_partner = fields.Char(string='Commercial Partner')
-    betting_software = fields.Char(string='Software Used')
-    terminal_count = fields.Integer(string='Number of Terminals')
+    commercial_name = fields.Char(string='Nombre Comercial', required=True)
+    address = fields.Text(string='Dirección Exacta', required=True)
+    municipality = fields.Char(string='Municipio')
+    parish = fields.Char(string='Parroquia')
+    municipal_license = fields.Char(string='N° Licencia Municipal')
+    phone = fields.Char(string='Teléfono / Celular')
+    email = fields.Char(string='Correo Electrónico')
 
-    # Games
+
+    commercializer = fields.Char(string='Comercializadora')
+    software = fields.Char(string='Software de Apuestas')
+    terminals_count = fields.Integer(string='N° de Terminales')
+
     game_animalitos = fields.Boolean(string='Animalitos')
-    game_traditional_lottery = fields.Boolean(string='Traditional Lottery')
-    game_others = fields.Char(string='Others')
+    game_traditional = fields.Boolean(string='Lotería Tradicional')
+    game_other_check = fields.Boolean(string='Comercializa Otros')
+    game_other_text = fields.Char(string='Especificación de Otros')
 
-    # =================================================================
-    # IV. REQUIREMENTS (PDF ATTACHMENTS)
-    # =================================================================
-    req_id_rif = fields.Binary(string='ID & RIF Copy', attachment=True)
-    req_bank_cert = fields.Binary(string='Bank Certification', attachment=True)
-    req_funds_declaration = fields.Binary(string='Lawful Origin of Funds', attachment=True)
-    req_property_doc = fields.Binary(string='Property/Lease Agreement', attachment=True)
-    req_contract_partner = fields.Binary(string='Partner Contract', attachment=True)
 
-    # Additional Legal
-    req_charter_doc = fields.Binary(string='Constitutive Document', attachment=True)
-    req_shareholders = fields.Binary(string='Shareholder List', attachment=True)
-    req_tax_declaration = fields.Binary(string='Last Tax Declaration', attachment=True)
-    req_bank_cert_legal = fields.Binary(string='Legal Bank Certification', attachment=True)
+    req_id_rif = fields.Binary(string='1. Cédula y RIF', attachment=True)
+    req_funds_origin = fields.Binary(string='2. Origen Lícito de Fondos', attachment=True)
+    req_property = fields.Binary(string='3. Propiedad/Arrendamiento', attachment=True)
+    req_conalot = fields.Binary(string='4. Aval CONALOT', attachment=True)
+    req_photos = fields.Binary(string='5. Fotos del Local', attachment=True)
+    req_charter = fields.Binary(string='6. Documento Constitutivo', attachment=True)
+    req_shareholders = fields.Binary(string='7. Relación de Accionistas', attachment=True)
+    req_islr = fields.Binary(string='8. Declaración ISLR', attachment=True)
+    req_economic_license = fields.Binary(string='9. Licencia Actividades Económicas', attachment=True)
+    req_mercantile_registry = fields.Binary(string='10. Registro Mercantil', attachment=True)
 
-    # =================================================================
-    # V. PAYMENT CONSTANCY
-    # =================================================================
-    payment_reference = fields.Char(string='Reference Number')
-    payment_date = fields.Date(string='Payment Date')
-    payment_amount = fields.Monetary(string='Amount', currency_field='currency_id')
+
+    payment_reference = fields.Char(string='Referencia de Pago')
+    payment_date = fields.Date(string='Fecha de Pago')
+    payment_amount = fields.Monetary(string='Monto (Bs.)', currency_field='currency_id')
     currency_id = fields.Many2one('res.currency', default=lambda self: self.env.company.currency_id)
 
-    # =================================================================
-    # VI. DECLARATION AND SIGNATURE
-    # =================================================================
-    sworn_declaration = fields.Boolean(string='Sworn Declaration Accepted')
-    signature = fields.Binary(string='Applicant Signature', attachment=True)
-
-    # =================================================================
-    # INTERNAL USE
-    # =================================================================
-    census_code = fields.Char(string='Census Code', readonly=True, copy=False, default='New')
-    reception_date = fields.Date(string='Reception Date', default=fields.Date.context_today, readonly=True)
-    receiver_user_id = fields.Many2one('res.users', string='Receiver', default=lambda self: self.env.user, readonly=True)
-    user_id = fields.Many2one('res.users', string='Linked Odoo User', readonly=True)
+    sworn_declaration = fields.Boolean(string='Declaración Jurada Aceptada')
+    
+    census_code = fields.Char(string='Código de Censo', readonly=True, copy=False, default='Nuevo')
+    reception_date = fields.Date(string='Fecha de Recepción', default=fields.Date.context_today, readonly=True)
+    receiver_user_id = fields.Many2one('res.users', string='Funcionario Receptor', default=lambda self: self.env.user, readonly=True)
+    user_id = fields.Many2one('res.users', string='Usuario Odoo Vinculado', readonly=True)
     state = fields.Selection([
-        ('draft', 'Draft'),
-        ('review', 'Under Review'),
-        ('approved', 'Approved'),
-        ('rejected', 'Rejected')
-    ], string='Status', default='draft', tracking=True)
+        ('draft', 'Borrador'),
+        ('review', 'En Revisión'),
+        ('approved', 'Aprobado'),
+        ('rejected', 'Rechazado')
+    ], string='Estado', default='draft', tracking=True)
 
     @api.model
     def create(self, vals):
-        if vals.get('census_code', 'New') == 'New':
-            vals['census_code'] = self.env['ir.sequence'].next_by_code('betting.center.census.seq') or 'New'
+        if vals.get('census_code', 'Nuevo') == 'Nuevo':
+            vals['census_code'] = self.env['ir.sequence'].next_by_code('betting.center.census.seq') or 'Nuevo'
         return super(BettingCenterCensus, self).create(vals)
 
     def action_approve_and_create_user(self):
@@ -116,7 +93,7 @@ class BettingCenterCensus(models.Model):
             return False
 
         if not self.email:
-            raise ValidationError(_("A valid email is required to create a user."))
+            raise ValidationError(_("Se requiere un correo válido para crear el usuario."))
 
         login = self.rif_natural if self.person_type == 'natural' else self.rif_legal
         name = self.full_name if self.person_type == 'natural' else self.legal_representative

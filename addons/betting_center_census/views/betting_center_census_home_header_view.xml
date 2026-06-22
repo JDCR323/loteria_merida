@@ -7,28 +7,34 @@
         </xpath>
 
         <xpath expr="//header[@id='top']" position="replace">
-            <div class=" my-4" style="font-family: 'Century Gothic', sans-serif;">
-                <div class="card shadow-sm border-0 bg-white p-3" >
+            <div class="my-4" style="font-family: 'Century Gothic', sans-serif;">
+                <div class="card shadow-sm border-0 bg-white p-3">
                     
-                    <div class="d-flex justify-content-between align-items-center pb-3 border-bottom" style="border-color: #090915 !important;">
+                    <div class="row align-items-center pb-3 border-bottom m-0" style="border-color: #090915 !important;">
                         
-                        <a href="https://merida.gob.ve" target="_blank" class="navbar-brand m-0 p-0" title="Gobernación del Estado Bolivariano de Mérida">
-                            <img src="/betting_center_census/static/src/img/logo_gobernacion.png" 
-                                 alt="Gobernación de Mérida" 
-                                 style=" width: 200px; object-fit: contain;"/>
-                        </a>
+                        <div class="col-4 p-0 text-start">
+                            <a href="https://merida.gob.ve" target="_blank" class="d-inline-block" title="Gobernación del Estado Bolivariano de Mérida">
+                                <img src="/betting_center_census/static/src/img/logo_gobernacion.png" 
+                                     alt="Gobernación de Mérida" 
+                                     style="height: 75px; width: 100%; max-width: 180px; object-fit: contain; object-position: left;"/>
+                            </a>
+                        </div>
 
-                        <a href="/" class="navbar-brand m-0 p-0" title="Lotería de Mérida">
-                            <img src="/betting_center_census/static/src/img/LOTERIA.png" 
-                                 alt="Lotería de Mérida Logo" 
-                                 style="width: 200px; object-fit: contain;"/>
-                        </a>
+                        <div class="col-4 p-0 text-center">
+                            <a href="/" class="d-inline-block" title="Lotería de Mérida">
+                                <img src="/betting_center_census/static/src/img/LOTERIA.png" 
+                                     alt="Lotería de Mérida Logo" 
+                                     style="height: 85px; width: 100%; max-width: 200px; object-fit: contain; object-position: center;"/>
+                            </a>
+                        </div>
 
-                        <a href="/about-us" class="navbar-brand m-0 p-0" title="Instituto de Beneficencia Pública y Asistencia Social">
-                            <img src="/betting_center_census/static/src/img/logo_impprijp.png"    
-                                 alt="IBPAS Mérida" 
-                                 style="width: 200px; object-fit: contain;"/>
-                        </a>
+                        <div class="col-4 p-0 text-end">
+                            <a href="/about-us" class="d-inline-block" title="Instituto de Beneficencia Pública y Asistencia Social">
+                                <img src="/betting_center_census/static/src/img/logo_justicia_paz.png"    
+                                     alt="IBPAS Mérida" 
+                                     style="height: 75px; width: 100%; max-width: 180px; object-fit: contain; object-position: right;"/>
+                            </a>
+                        </div>
 
                     </div>
 
@@ -43,21 +49,60 @@
                             </t>
                         </ul>
 
-                        <!-- <div style="max-width: 300px; flex-grow: 1;">
-                            <form method="get" class="o_searchbar_form s_searchbar_input" action="/website/search" data-snippet="s_searchbar_input">
-                                <div role="search" class="input-group input-group-sm">
-                                    <input type="search" name="search" class="search-query form-control oe_search_box rounded-start-pill border-0 bg-light ps-3" placeholder="Buscar en el portal..." data-search-type="all" data-limit="5"/>
-                                    <button type="submit" aria-label="Búsqueda" class="btn oe_search_button rounded-end-pill bg-light border-0 px-3">
-                                        <i class="oi oi-search" style="color: #017f33;"></i>
-                                    </button>
-                                </div>
-                            </form>
-                        </div> -->  
+                        <t t-set="admin_company" t-value="env.ref('base.main_company')"/>
 
-                        <div>
-                            <a href="/census/register" class="btn text-white fw-bold px-4 shadow-sm" style="background-color: #d0142c; border-radius: 20px; font-size: 12px; letter-spacing: 0.5px;">
-                                Censo Obligatorio
+                        <div class="d-flex align-items-center gap-3 border-start border-end px-3 flex-wrap d-none d-lg-flex" style="border-color: rgba(9, 9, 21, 0.12) !important;">
+                            
+                            <div class="d-flex align-items-center text-muted" style="font-size: 11px; max-width: 280px; line-height: 1.2;">
+                                <i class="fa fa-map-marker fa-fw me-1 text-uppercase" style="color: #017f33; font-size: 13px;"></i>
+                                <span>
+                                    <strong>Dirección:</strong> 
+                                    <span t-out="admin_company.street"/>
+                                </span>
+                            </div>
+
+                            <a t-attf-href="tel:#{admin_company.phone}" class="d-flex align-items-center text-decoration-none text-muted" style="font-size: 11px;" title="Llamar a la institución">
+                                <i class="fa fa-phone fa-fw me-1" style="color: #017f33; font-size: 13px;"></i>
+                                <span><strong>Telf:</strong> <span t-out="admin_company.phone"/></span>
                             </a>
+
+                            <a t-attf-href="mailto:#{admin_company.email}" class="d-flex align-items-center text-decoration-none text-muted" style="font-size: 11px;" title="Enviar correo institucional">
+                                <i class="fa fa-envelope fa-fw me-1" style="color: #017f33; font-size: 13px;"></i>
+                                <span t-out="admin_company.email"/>
+                            </a>
+
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2 flex-wrap">
+        
+                            <t t-if="user_id.id != website.user_id.id">
+                                <div class="d-flex align-items-center me-2 text-dark fw-bold small">
+                                    <i class="fa fa-user me-1" style="color: #017f33; font-size: 22px;"></i>
+                                    <span t-out="user_id.name" class="d-none d-sm-inline"/>
+                                </div>
+
+                                <a role="menuitem" 
+                                href="/web/session/logout?redirect=/" 
+                                class="btn btn-sm btn-outline-danger fw-bold d-flex align-items-center text-uppercase px-3" 
+                                style="border-radius: 5px; font-size: 18px; ">
+                                    <i class="fa fa-sign-out me-1"></i> Cerrar Sesión
+                                </a>
+                            </t>
+
+                            <t t-else="">
+                                <a href="/web/login" 
+                                class="btn btn-sm fw-bold px-3 text-uppercase me-1" 
+                                style="color: #090915; border: 1px solid #090915; border-radius: 5px; font-size: 18px; letter-spacing: 0.5px; transition: all 0.3s ease;">
+                                    <i class="fa fa-sign-in me-1"></i> Iniciar Sesión
+                                </a>
+
+                                <a href="/census/register" 
+                                class="btn text-white fw-bold btn-sm px-3 text-uppercase shadow-sm" 
+                                style="background-color: #d0142c; border-radius: 5px; font-size: 18px; letter-spacing: 0.5px;">
+                                    Censo Obligatorio
+                                </a>
+                            </t>
+                            
                         </div>
 
                     </div>

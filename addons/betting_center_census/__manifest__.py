@@ -16,17 +16,18 @@
     'category': 'Administration',
     'version': '1.0.0',
 
-    # Dependencies
     'depends': ['base', 'website', 'portal', 'auth_signup'],
 
-    # Data files
     'data': [
         'security/ir.model.access.csv',
+        'data/mail_template_data.xml',
         'views/betting_center_census_views.xml',
         'views/betting_center_census_home_header_view.xml',
         'views/betting_center_templates.xml',
         'views/betting_center_census_home_views.xml',
+        'views/betting_center_census_portal_template.xml',
         'views/ir_menu_views.xml',
+        
     ],
 
     'assets': {

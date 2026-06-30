@@ -162,43 +162,40 @@
                                 <h5 class="border-bottom pb-2 my-4" style="color: #017f33;">IV. LISTA DE RECAUDOS (OPCIONAL EN ESTE PASO, SE PUEDE ENTREGAR EN FÍSICO)</h5>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label small">1. Copia de Cédula de Identidad y R.I.F. vigente</label>
+                                        <label class="form-label small"> Copia de Cédula de Identidad y R.I.F. vigente</label>
                                         <input type="file" name="req_id_rif" class="form-control form-control-sm" accept=".pdf"/>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label small">2. Declaración Jurada de Origen Lícito de Fondos</label>
+                                        <label class="form-label small"> Declaración Jurada de Origen Lícito de Fondos</label>
                                         <input type="file" name="req_funds_origin" class="form-control form-control-sm" accept=".pdf"/>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label small">3. Copia de documento de propiedad o contrato de arrendamiento</label>
+                                        <label class="form-label small"> Copia de documento de propiedad o contrato de arrendamiento</label>
                                         <input type="file" name="req_property" class="form-control form-control-sm" accept=".pdf"/>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label small">4. Aval o Licencia vigente de CONALOT</label>
+                                        <label class="form-label small"> Aval o Licencia vigente de CONALOT</label>
                                         <input type="file" name="req_conalot" class="form-control form-control-sm" accept=".pdf"/>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label small">5. Dos (2) Fotos del Establecimiento</label>
+                                        <label class="form-label small"> Dos (2) Fotos del Establecimiento</label>
                                         <input type="file" name="req_photos" class="form-control form-control-sm" accept=".pdf,.jpg,.jpeg,.png" multiple="multiple"/>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label small">6. Copia del Documento Constitutivo</label>
+                                        <label class="form-label small"> Copia del Documento Constitutivo</label>
                                         <input type="file" name="req_charter" class="form-control form-control-sm" accept=".pdf"/>
                                     </div>
+         
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label small">7. Relación de accionistas</label>
-                                        <input type="file" name="req_shareholders" class="form-control form-control-sm" accept=".pdf"/>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label small">8. Copia de la última declaración de I.S.L.R.</label>
+                                        <label class="form-label small"> Copia de la última declaración de I.S.L.R.</label>
                                         <input type="file" name="req_islr" class="form-control form-control-sm" accept=".pdf"/>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label small">9. Licencia de Actividades Económicas</label>
+                                        <label class="form-label small"> Licencia de Actividades Económicas</label>
                                         <input type="file" name="req_economic_license" class="form-control form-control-sm" accept=".pdf"/>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label small">10. Registro Mercantil de la Empresa</label>
+                                        <label class="form-label small"> Registro Mercantil de la Empresa</label>
                                         <input type="file" name="req_mercantile_registry" class="form-control form-control-sm" accept=".pdf"/>
                                     </div>
                                 </div>

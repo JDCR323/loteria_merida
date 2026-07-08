@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="s_loteria_org_chart" name="Organigrama Institucional Futurista">
+        <section class="org-chart-wrapper py-5 o_colored_level" data-snippet="s_loteria_org_chart" data-name="Organigrama Estructural" style="background-color: #04040a; font-family: 'Century Gothic', sans-serif;">
+            <div class="container-fluid px-5">
+                
+                <div class="text-center mb-5">
+                    <span class="badge text-white mb-2 px-3 py-2 text-uppercase fw-bold" style="background-color: #017f33; letter-spacing: 1px; font-size: 11px;">
+                        Estructura Organizativa
+                    </span>
+                    <h2 class="text-uppercase fw-bold text-white mb-2" style="letter-spacing: 2px;">Estructura Jerárquica del Instituto</h2>
+                    <p class="text-muted small">Todos dedicados al cumplimiento de la Ley de Loterías y la normativa reguladora vigente.</p>
+                    <div style="height: 3px; width: 60px; background-color: #d0142c; margin: 0 auto; box-shadow: 0 0 8px #d0142c;"></div>
+                </div>
+
+                <div class="futuristic-tree d-flex justify-content-center">
+                    <ul>
+                        <li>
+                            <div class="cyber-card highlight-card">
+                                <h4 class="name" contenteditable="true">Gobernador</h4>
+                                <span class="title text-danger fw-bold">Nivel Ejecutivo</span>
+                            </div>
+                            <ul>
+                                <li>
+                                    <div class="cyber-card">
+                                        <h4 class="name" contenteditable="true">Consejo Directivo</h4>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <div class="cyber-card highlight-card">
+                                                <h4 class="name" contenteditable="true">Director General</h4>
+                                            </div>
+                                            
+                                            <ul>
+                                                <li>
+                                                    <div class="cyber-card mini-card">
+                                                        <h4 class="name" contenteditable="true">Auditoría Interna</h4>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="cyber-card highlight-card">
+                                                        <h4 class="name" contenteditable="true">Coordinador General</h4>
+                                                        <span class="title">Nivel de Soporte</span>
+                                                    </div>
+                                                    
+                                                    <ul>
+                                                        <li>
+                                                            <div class="cyber-card mini-card">
+                                                                <h4 class="name" contenteditable="true">Unidad de Atención<br/>al Ciudadano</h4>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="cyber-card mini-card">
+                                                                <h4 class="name" contenteditable="true">Unidad de Control<br/>de Gestión</h4>
+                                                                <div class="sub-departments">
+                                                                    <small contenteditable="true">Unidad de Gestión Comunicacional</small>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="cyber-card mini-card">
+                                                                <h4 class="name" contenteditable="true">Unidad de<br/>Tecnología</h4>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="cyber-card mini-card">
+                                                                <h4 class="name" contenteditable="true">Unidad de Prevención</h4>
+                                                                <div class="sub-departments">
+                                                                    <small contenteditable="true">Control y Fiscalización contra la Legitimación de Capitales</small>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                        <li>
+                                                            <div class="cyber-card">
+                                                                <h4 class="name" contenteditable="true">Gerencia de<br/>Administración</h4>
+                                                                <div class="sub-departments">
+                                                                    <small contenteditable="true">Coordinación de Administración</small>
+                                                                    <small contenteditable="true">Coordinación de Bienes</small>
+                                                                    <small contenteditable="true">Coordinación de Compras</small>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="cyber-card">
+                                                                <h4 class="name" contenteditable="true">Gerencia de Gestión<br/>de Talento Humano</h4>
+                                                                <div class="sub-departments">
+                                                                    <small contenteditable="true">Coordinación de Nómina</small>
+                                                                    <small contenteditable="true">Coordinación de Asesoría Legal</small>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="cyber-card">
+                                                                <h4 class="name" contenteditable="true">Gerencia de<br/>Planificación y Presupuesto</h4>
+                                                                <div class="sub-departments">
+                                                                    <small contenteditable="true">Coordinación de Planificación</small>
+                                                                    <small contenteditable="true">Coordinación de Ejecución Presupuestaria</small>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                        <li>
+                                                            <div class="cyber-card highlight-card">
+                                                                <h4 class="name" contenteditable="true">Gerencia de Beneficencia<br/>Pública y Social</h4>
+                                                                <div class="sub-departments">
+                                                                    <small contenteditable="true">Coordinación de Programas Sociales</small>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="cyber-card highlight-card">
+                                                                <h4 class="name" contenteditable="true">Gerencia de<br/>Fiscalización</h4>
+                                                                <div class="sub-departments">
+                                                                    <small contenteditable="true">Coordinación Territorial y Sectorial</small>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="cyber-card highlight-card">
+                                                                <h4 class="name" contenteditable="true">Gerencia de<br/>Comercialización y Operaciones</h4>
+                                                                <div class="sub-departments">
+                                                                    <small contenteditable="true">Coordinación de Agencias y Sorteo</small>
+                                                                    <small contenteditable="true">Coordinación de Comercialización, Mercadeo y Publicidad</small>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="cyber-card mini-card">
+                                                        <h4 class="name" contenteditable="true">Consultoría<br/>Jurídica</h4>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </section>
+        </template>
+
+        <template id="add_org_chart_to_builder" inherit_id="website.snippets" name="Inyectar Organigrama en Bloques">
+            <xpath expr="//div[@id='snippet_structure']//div[hasclass('o_panel_body')]" position="inside">
+                <t snippet-group="betting_center_census" snippet-category="Censo y Registro">
+                    <t t-set="id" t-value="'s_loteria_org_chart'"/>
+                    <t t-set="title">Organigrama IOBPAS</t>
+                    <t t-set="icon" t-value="'fa-sitemap'"/>
+                    <t t-set="thumbnail" t-value="'/betting_center_census/static/src/img/thumb_org.png'"/>
+                </t>
+            </xpath>
+        </template>
+</odoo>

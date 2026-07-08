@@ -175,11 +175,19 @@
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label small"> Aval o Licencia vigente de CONALOT</label>
-                                        <input type="file" name="req_conalot" class="form-control form-control-sm" accept=".pdf"/>
+                                        <input type="file" name="req_conalot" class="form-control form-control-sm" accept=".pdf"/>>q
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label small"> Dos (2) Fotos del Establecimiento</label>
                                         <input type="file" name="req_photos" class="form-control form-control-sm" accept=".pdf,.jpg,.jpeg,.png" multiple="multiple"/>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label small"> Licencia de Actividades Económicas</label>
+                                        <input type="file" name="req_economic_license" class="form-control form-control-sm" accept=".pdf"/>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label small"> Registro Mercantil de la Empresa</label>
+                                        <input type="file" name="req_mercantile_registry" class="form-control form-control-sm" accept=".pdf"/>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label small"> Copia del Documento Constitutivo</label>
@@ -189,14 +197,6 @@
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label small"> Copia de la última declaración de I.S.L.R.</label>
                                         <input type="file" name="req_islr" class="form-control form-control-sm" accept=".pdf"/>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label small"> Licencia de Actividades Económicas</label>
-                                        <input type="file" name="req_economic_license" class="form-control form-control-sm" accept=".pdf"/>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label small"> Registro Mercantil de la Empresa</label>
-                                        <input type="file" name="req_mercantile_registry" class="form-control form-control-sm" accept=".pdf"/>
                                     </div>
                                 </div>
 

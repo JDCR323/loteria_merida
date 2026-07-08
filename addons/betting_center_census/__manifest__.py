@@ -26,6 +26,7 @@
         'views/betting_center_templates.xml',
         'views/betting_center_census_home_views.xml',
         'views/betting_center_census_portal_template.xml',
+        # 'views/website_org_chart.xml',
         'views/ir_menu_views.xml',
         
     ],
@@ -33,7 +34,7 @@
     'assets': {
         'web.assets_frontend': [
             'betting_center_census/static/src/scss/modal.scss',
-            # 'betting_center_census/static/src/scss/modal_animations.scss',
+            # 'betting_center_census/static/src/scss/website_org_chat.scss',
             'betting_center_census/static/src/js/modal_loader.js',
         ],
     },

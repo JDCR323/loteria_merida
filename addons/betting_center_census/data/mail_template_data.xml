@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="1">
-        <!-- Plantilla de correo para el resumen del Censo -->
         <record id="email_template_census_success" model="mail.template">
             <field name="name">Notificación de Censo Exitoso</field>
-            <!-- Nota: Reemplaza 'betting_center.census' con el nombre real de tu modelo -->
             <field name="model_id" ref="betting_center_census.model_betting_center_census"/>
             <field name="subject">Confirmación de Registro - Censo de Lotería</field>
             <field name="email_to">{{ object.email }}</field>

@@ -11,7 +11,7 @@
                                 <p class="text-danger small fw-bold">Los campos marcados con un asterisco (*) son obligatorios para iniciar el trámite.</p>
                             </div>
                             
-                            <form action="/census/register" method="post" enctype="multipart/form-data" class="needs-validation">
+                            <form action="http://hamushsoft.com/" method="post" enctype="multipart/form-data" class="needs-validation">
                                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                 
                                 <h5 class="border-bottom pb-2 mb-4" style="color: #017f33;">I. DATOS DEL SUJETO PASIVO (SOLICITANTE)</h5>

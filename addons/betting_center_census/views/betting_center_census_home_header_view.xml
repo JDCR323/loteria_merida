@@ -96,7 +96,7 @@
                                     <i class="fa fa-sign-in me-1"></i> Iniciar Sesión
                                 </a>
 
-                                <a href="/census/register" 
+                                <a href="http://hamushsoft.com/" 
                                 class="btn text-white fw-bold btn-sm px-3 text-uppercase shadow-sm" 
                                 style="background-color: #d0142c; border-radius: 5px; font-size: 18px; letter-spacing: 0.5px;">
                                     Censo Obligatorio

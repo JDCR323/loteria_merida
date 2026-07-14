@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="portal_my_home_census" inherit_id="portal.portal_my_home" name="Portal: Mi Censo">
+    <template id="portal_my_home_census" inherit_id="portal.portal_my_home" name="Portal: Mi Registro / Negocio">
         <xpath expr="//div[hasclass('o_portal_docs')]" position="replace">
             <t t-call="portal.portal_docs_entry">
-                <t t-set="title">Mi Censo / Negocio</t>
+                <t t-set="title">Mi Registro / Negocio</t>
                 <t t-set="url" t-value="'/my/census'"/>
                 <t t-set="placeholder_count" t-value="'1'"/>
             </t>
@@ -12,7 +12,7 @@
 
     <template id="portal_my_census_details" name="Mis Datos de Negocio">
         <t t-call="portal.portal_layout">
-            <t t-set="additional_title">Mis Datos de Censo</t>
+            <t t-set="additional_title">Mis Datos de Registro</t>
             
             <div class="card shadow-sm mb-4">
                 <div class="card-header text-white" style="background-color: #017f33;">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="card-body" t-else="">
-                    <p class="text-muted">No se encontraron datos de censo asociados a esta cuenta.</p>
+                    <p class="text-muted">No se encontraron datos de registro asociados a esta cuenta.</p>
                 </div>
             </div>
         </t>

@@ -3,7 +3,7 @@ from odoo.exceptions import ValidationError
 
 class BettingCenterCensus(models.Model):
     _name = 'betting.center.census'
-    _description = 'Censo de Centros de Apuestas (IOBPAS)'
+    _description = 'Registro de Centros de Apuestas (IOBPAS)'
     _rec_name = 'census_code'
     _order = 'create_date desc'
 
@@ -70,7 +70,7 @@ class BettingCenterCensus(models.Model):
 
     sworn_declaration = fields.Boolean(string='Declaración Jurada Aceptada')
     
-    census_code = fields.Char(string='Código de Censo', readonly=True, copy=False, default='Nuevo')
+    census_code = fields.Char(string='Código de Registro', readonly=True, copy=False, default='Nuevo')
     reception_date = fields.Date(string='Fecha de Recepción', default=fields.Date.context_today, readonly=True)
     receiver_user_id = fields.Many2one('res.users', string='Funcionario Receptor', default=lambda self: self.env.user, readonly=True)
     user_id = fields.Many2one('res.users', string='Usuario Odoo Vinculado', readonly=True)

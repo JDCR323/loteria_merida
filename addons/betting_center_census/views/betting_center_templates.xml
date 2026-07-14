@@ -1,6 +1,6 @@
 <odoo>
     <data>
-      <template id="template_register_census" name="Formulario de Censo">
+      <template id="template_register_census" name="Formulario de Registro de Lotería">
             <t t-call="website.layout">
                 <div id="wrap" class="container my-5" style="font-family: 'Century Gothic', sans-serif;">
                     <div class="row justify-content-center">
@@ -225,7 +225,7 @@
                                     </label>
                                 </div>
 
-                                <button type="submit" class="btn text-white w-100 btn-lg shadow-sm" style="background-color: #d0142c; border-radius: 8px;">Enviar Registro de Censo</button>
+                                <button type="submit" class="btn text-white w-100 btn-lg shadow-sm" style="background-color: #d0142c; border-radius: 8px;">Enviar Registro de Lotería</button>
                             </form>
                         </div>
                     </div>
@@ -281,7 +281,7 @@
                         <h2 class="text-dark fw-bold">¡Registro Recibido con Éxito!</h2>
                         <p class="lead text-muted">Su documentación se encuentra en revisión por el Instituto.</p>
                         <div class="alert d-inline-block px-5 my-3" style="background-color: #e9ecef; border-left: 4px solid #d0142c;">
-                            Código de Censo Asignad: <h4 class="fw-bold m-0" style="color: #090915;"><t t-out="census_code"/></h4>
+                            Código de Registro Asignado: <h4 class="fw-bold m-0" style="color: #090915;"><t t-out="census_code"/></h4>
                         </div>
                         <p class="small text-secondary">Una vez aprobado, recibirá un correo electrónico con sus credenciales de acceso al portal.</p>
                         <div class="mt-4"><a href="/" class="btn text-white px-4" style="background-color: #017f33; border-radius: 20px;">Volver al Inicio</a></div>
